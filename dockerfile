@@ -3,4 +3,4 @@ COPY . /test
 RUN #apt get update -y \
 apt get upgrade -y \
 test/ldapTest.sh
-CMD ["echo","LDAP installed!"]
+#CMD ["echo","LDAP installed!"]
