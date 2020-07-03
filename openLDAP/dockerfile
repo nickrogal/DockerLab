@@ -2,4 +2,4 @@ FROM ubuntu:latest
 COPY . /install
 RUN apt-get update -y && apt-get upgrade -y
 RUN sh install/install-openldap.sh
-#CMD ["sh","test/ldapTest.sh"]
+#CMD ["sh","install/install-openldap.sh"]
