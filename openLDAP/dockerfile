@@ -1,6 +1,5 @@
-FROM ubuntu:18.04
-RUN apt get update -y
-RUN apt install openssh-server -y
-RUN ufw allow ssh
-RUN aprt install slapd ldap-utilis -y
-RUN dpkg-reconfigure slapdapt get install phpldapadmin -y
+FROM ubuntu:latest
+COPY . /install
+RUN apt-get update -y && apt-get upgrade -y
+RUN sh install/install-openldap.sh
+#CMD ["sh","test/ldapTest.sh"]
