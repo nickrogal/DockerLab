@@ -1,0 +1,6 @@
+FROM ubuntu:18.04
+RUN apt get update -y
+RUN apt install openssh-server -y
+RUN ufw allow ssh
+RUN aprt install slapd ldap-utilis -y
+RUN dpkg-reconfigure slapdapt get install phpldapadmin -y
