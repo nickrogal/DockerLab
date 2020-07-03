@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
+FROM ubuntu:latest
 COPY . /test
 RUN apt-get update -y
-RUN test/ldapTest.sh
+RUN sh test/ldaptest.sh
 #CMD ["sh","test/ldapTest.sh"]
