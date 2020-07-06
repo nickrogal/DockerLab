@@ -12,7 +12,6 @@ RUN apt-get install -y php php-cgi libapache2-mod-php php-common php-pear php-mb
 RUN a2enconf php7.4-cgi
 RUN service apache2 restart
 RUN DEBIAN_FRONTEND=noninteractive /install/install-openldap.sh
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y slapd ldap-utils phpldapadmin
-RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
-RUN dpkg-reconfigure -f noninteractive slapd
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y slapd ldap-utils phpldapadmin
+#RUN dpkg-reconfigure -f noninteractive slapd
 #CMD echo "openLDAP configured my dude! You might want to change up the config file though."

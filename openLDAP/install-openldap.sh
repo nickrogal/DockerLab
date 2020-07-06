@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 password='root123'
 dn='dc=math,dc=nccu,dc=edu,dc=tw'
-ldap_ip=192.168.11.6
+ldap_ip=127.0.0.1
 
-cat << EOF | sudo debconf-set-selections
+cat << EOF | debconf-set-selections
 slapd slapd/internal/adminpw password root123
 slapd slapd/internal/generated_adminpw password root123
 slapd slapd/password2 password root123
@@ -20,9 +20,9 @@ slapd slapd/no_configuration boolean false
 slapd slapd/dump_database string when needed
 EOF
 
-apt-get install -y slapd ldap-utils nfs-common nfs-kernel-server
+apt-get install -y slapd ldap-utils
 
-hash_pw=`slappasswd -s $password`
+hash_pw='slappasswd -s $password'
 
 cat << EOF > /etc/ldap/ldap.conf
 BASE    $dn
@@ -66,8 +66,4 @@ changetype: modify
 add: olcRootPW
 olcRootPW: $hash_pw
 EOF
-ldapmodify -Y EXTERNAL -H ldapi:/// -f database.ldif
-
-echo '/home 140.119.66.0/24(rw),140.119.175.0/24(rw)' >> /etc/exports
-mkdir -p /etc/exports.d
-/etc/init.d/nfs-kernel-server restart
+ldapmodify -Y -f database.ldif
