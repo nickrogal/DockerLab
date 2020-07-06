@@ -67,4 +67,4 @@ add: olcRootPW
 olcRootPW: $hash_pw
 EOF
 
-ldapmodify -Y EXTERNAL -H ldapi:/// -f
+ldapmodify -Y EXTERNAL -H ldapi:/// -f database.ldif
