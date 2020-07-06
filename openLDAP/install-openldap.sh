@@ -1,6 +1,6 @@
 #!/bin/bash
 
-password='root123'
+password=$LDAP_ROOT_PASSWORD
 dn='dc=math,dc=nccu,dc=edu,dc=tw'
 ldap_ip=127.0.0.1
 
@@ -66,4 +66,5 @@ changetype: modify
 add: olcRootPW
 olcRootPW: $hash_pw
 EOF
-ldapmodify -Y -f database.ldif
+
+ldapmodify -Y EXTERNAL -H ldapi:/// -f

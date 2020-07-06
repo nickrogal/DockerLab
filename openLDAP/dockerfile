@@ -11,6 +11,7 @@ RUN apt-get install -y maven
 RUN apt-get install -y php php-cgi libapache2-mod-php php-common php-pear php-mbstring
 RUN a2enconf php7.4-cgi
 RUN service apache2 restart
+RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
 RUN DEBIAN_FRONTEND=noninteractive /install/install-openldap.sh
 #RUN DEBIAN_FRONTEND=noninteractive apt-get install -y slapd ldap-utils phpldapadmin
 #RUN dpkg-reconfigure -f noninteractive slapd
