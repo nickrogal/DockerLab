@@ -1,18 +1,18 @@
 
 FROM ubuntu:latest
+#I was getting weird init probs without declaring the run level
 ENV RUNLEVEL 1
-ENV LDAP_ROOT_PASSWORD="test123"
-ENV LDAP_DOMAIN="it610.local"
+#copy this puppy into the install dir
 COPY . /install
+#chmod, chea?
 RUN ["chmod", "+x", "/install/install-openldap.sh"]
+#Install the stuff. This can be cleaner. I'm just a neanderthal and could only get it to work by using all these layers
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y openssh-server
 RUN apt-get install -y maven
 RUN apt-get install -y php php-cgi libapache2-mod-php php-common php-pear php-mbstring
 RUN a2enconf php7.4-cgi
 RUN service apache2 restart
+#i was getting weird rc.d errors without the above. I can't find the stack overflow to give cred where I found the solution :(
 RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
 RUN DEBIAN_FRONTEND=noninteractive /install/install-openldap.sh
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y slapd ldap-utils phpldapadmin
-#RUN dpkg-reconfigure -f noninteractive slapd
-#CMD echo "openLDAP configured my dude! You might want to change up the config file though."
