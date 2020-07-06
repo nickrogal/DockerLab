@@ -1,7 +1,0 @@
-#ARG DEBIAN_FRONTEND=noninteractive
-FROM ubuntu:latest
-COPY . /install
-RUN ["chmod", "+x", "/install/install-openldap.sh"]
-RUN apt-get update -y && apt-get upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive /install/install-openldap.sh
-#CMD ["sh","install/install-openldap.sh"]
