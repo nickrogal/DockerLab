@@ -9,5 +9,5 @@ slapd slapd/password1 password it610rocks
 slapd slapd/domain string it610ismyfavoriteclass.com
 slapd shared/organization string it610ismyfavoriteclass.com
 EOF
-
+#lets get slapd
 apt-get install -y slapd ldap-utils
