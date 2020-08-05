@@ -15,5 +15,8 @@ RUN a2enconf php7.4-cgi
 RUN service apache2 restart
 #i was getting weird rc.d errors without the below line. I can't find the stack overflow to give cred where I found the solution :(
 RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
+#run our script to install and configure openLDAP
 RUN DEBIAN_FRONTEND=noninteractive /install/install-openldap.sh
+#install phpldapadmin
 RUN apt-get install -y phpldapadmin
+RUN mv /install/config.php /etc/phpldapadmin/config.php
