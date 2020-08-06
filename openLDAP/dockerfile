@@ -6,21 +6,19 @@ ENV RUNLEVEL 1
 COPY . /install
 #chmod, chea?
 RUN ["chmod", "+x", "/install/install-openldap.sh"]
-#RUN ["chmod", "+x", "/install/config.php"]
 #Install the stuff. This can be cleaner. I'm just a neanderthal and could only get it to work by using all these layers
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y openssh-server
 RUN apt-get install -y maven
 RUN apt-get install -y php php-cgi libapache2-mod-php php-common php-pear php-mbstring
 RUN a2enconf php7.4-cgi
-#RUN service apache2 restart
 #i was getting weird rc.d errors without the below line. I can't find the stack overflow to give cred where I found the solution :(
 RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
 #run our script to install and configure openLDAP
 RUN DEBIAN_FRONTEND=noninteractive /install/install-openldap.sh
 #install phpldapadmin
 RUN apt-get install -y phpldapadmin
-RUN cp /install/config.php /etc/phpldapadmin/
+#copy the preconfigured config.php file over to the container. whatever values are defined in config.php will take effect in the container.
 RUN cp /install/config.php /usr/share/phpldapadmin/config/
 #RUN a2dissite 000-default.conf
 #CMD service slapd start && service apache2 start
