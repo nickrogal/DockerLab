@@ -11,7 +11,7 @@ slapd
 Step 2:
 Populating slapd
 
-'''console
+'''bash
 $ docker run -p 80:80 -p 389:389 -it --name dockerlab --hostname dockerlab.it610ismyfavoriteclass.com dockerlab:latest
 '''
 
