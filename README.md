@@ -34,6 +34,12 @@ $ sudo docker build --pull --rm -f "openLDAP/dockerfile" -t dockerlab:latest "op
 <h3>Running the DockerLab OpenLDAP container</h3>
 
 
+$ docker run -p 80:80 -p 389:389 -it --name <containername> --hostname <containername>.it610ismyfavoriteclass.com dockerlab:latest
+
+Example:
+
+docker run -p 80:80 -p 389:389 -it --name dockerlab --hostname dockerlab.it610ismyfavoriteclass.com dockerlab:latest
+
 <h3>Starting Services</h3>
 
 
@@ -54,3 +60,6 @@ admin username: admin
 admin password: it610rocks
 
 <h3>Creating Objects</h3>
+
+
+<h3>Quirks, Recommendations, and Next Steps</h3>
