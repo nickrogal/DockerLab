@@ -20,5 +20,6 @@ RUN DEBIAN_FRONTEND=noninteractive /install/install-openldap.sh
 RUN apt-get install -y phpldapadmin
 #copy the preconfigured config.php file over to the container. whatever values are defined in config.php will take effect in the container.
 RUN cp /install/config.php /usr/share/phpldapadmin/config/
-#RUN a2dissite 000-default.conf
-#CMD service slapd start && service apache2 start
+#expose the ports
+EXPOSE 22 80 389
+#CMD /install/start-services.sh && wait

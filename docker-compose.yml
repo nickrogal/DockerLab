@@ -1,1 +1,7 @@
-#i haven't started this yet
+version: '3'
+    services: 
+        app:
+            build:
+                context:
+                    dockerfile: dockerfile
+                    
