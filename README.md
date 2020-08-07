@@ -1,6 +1,6 @@
 # DockerLab
 
-<h4>Preface</h4>
+<h3>Preface</h3>
 
 Step 1:
 slapd
