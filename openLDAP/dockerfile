@@ -22,4 +22,4 @@ RUN apt-get install -y phpldapadmin
 RUN cp /install/config.php /usr/share/phpldapadmin/config/
 #expose the ports
 EXPOSE 22 80 389
-#CMD /install/start-services.sh && wait
+
