@@ -3,7 +3,6 @@
 Step 1:
 slapd
 
-
 Step 2:
 Populating slapd
 

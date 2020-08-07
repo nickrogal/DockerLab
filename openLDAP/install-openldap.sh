@@ -1,6 +1,6 @@
 #!/bin/bash
 #I took bits of https://stackoverflow.com/questions/28937889/how-to-do-an-initial-setup-of-slapd-olc-with-ldapmodify and reworked it as my own.
-#Below sets the noninteractive slapd
+#Below sets the noninteractive slapd. You can change the values to whatever you want or use the defaults.
 debconf-set-selections <<EOF
 slapd slapd/internal/generated_adminpw password it610rocks
 slapd slapd/password2 password it610rocks

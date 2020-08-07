@@ -283,7 +283,7 @@ $servers->newServer('ldap_pla');
 
 /* A convenient name that will appear in the tree viewer and throughout
    phpLDAPadmin to identify this LDAP server to users. */
-$servers->setValue('server','name','LDAP Test');
+$servers->setValue('server','name','DockerLab OpenLDAP Server');
 
 /* Examples:
    'ldap.example.com',

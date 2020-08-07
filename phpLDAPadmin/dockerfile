@@ -1,7 +1,0 @@
-FROM ubuntu:latest
-#I was getting weird init probs without declaring the run level
-ENV RUNLEVEL 1
-#copy this puppy into the install dir
-COPY . /install
-#chmod, chea?
-RUN ["chmod", "+x", "/install/install-phpldapadmin.sh"]
